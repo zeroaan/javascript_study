@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var li =['a', 'b', 'c', 'd'];
+        
+        // 추가
+        li.push('e');
+        for (var i = 0; i < li.length; i++) {
+            document.write(li[i].toUpperCase());
+        }
+        
+        li = li.concat(['f', 'g']);
+        document.write("<br />" + li);
+
+        li.unshift('z');
+        document.write("<br />" + li);
+
+        li.splice(2, 0, 'B');
+        document.write("<br />" + li);
+
+        // 제거
+        li.shift();
+        document.write("<br />" + li);
+
+        li.pop();
+        document.write("<br />" + li);
+        
+        // 정렬
+        li.sort();
+        document.write("<br />" + li);
+
+        li.reverse();
+        document.write("<br />" + li);
+    </script>
+</body>
+</html>
