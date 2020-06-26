@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script defer src="object2.js"></script>
+    <script src="jquery.js"></script>
 </head>
 <body>
-    <div></div>
+    <ul id='list'>
+        <li>empty</li>
+        <li>empty</li>
+        <li>empty</li>
+    </ul>
+    <input type="button" value="go" id="go">
+    <input type="button" value="back" id="back">
+    <script>
+        $('#go').click(function(){
+            $('#list li').text('coding');
+        })
+        $('#back').click(function(){
+            $('#list li').text('empty');
+        })
+    </script>
 </body>
 </html>
