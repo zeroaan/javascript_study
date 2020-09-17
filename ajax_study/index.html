@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script defer src="colors.js"></script>
+    <script defer src="fetchPage.js"></script>
+    <title>Ajax</title>
+  </head>
+  <body>
+    <h1><a href="#!welcome" onclick="fetchPage('welcome')">WEB</a></h1>
+    <input
+      id="night_day"
+      type="button"
+      value="night"
+      onclick="nightDayHandler(this)"
+    />
+    <ul class="nav"></ul>
+    <article></article>
+  </body>
+</html>
