@@ -14,3 +14,7 @@ body {
   border: 1px soild black;
   cursor: pointer;
 }
+
+.draggable.dragging {
+  opacity: 0.5;
+}
