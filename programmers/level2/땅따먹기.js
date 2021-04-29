@@ -22,15 +22,12 @@
 function solution(land) {
   let sum = 0
 
-  for (let i = 0; i < land.length; i++) {
+  for (let i = 0; i < land.length - 1; i++) {
     for (let j = 0; j < land[i].length; j++) {
-      if (i === 0) continue
-      else {
-        let arr = land[i - 1].slice()
-        arr[j] = 0
-        land[i][j] += Math.max.apply(null, arr)
-        sum = Math.max(land[i][j], sum)
-      }
+      const arr = [...land[i]]
+      arr[j] = 0
+      land[i + 1][j] += Math.max(...arr)
+      sum = Math.max(land[i + 1][j], sum)
     }
   }
   return sum
