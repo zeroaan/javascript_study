@@ -16,14 +16,12 @@ n개의 음이 아닌 정수가 있습니다. 이 수를 적절히 더하거나 
 function solution(numbers, target) {
   let answer = 0
 
-  function getAnswer(x, value) {
-    if (x < numbers.length) {
-      getAnswer(x + 1, value + numbers[x])
-      getAnswer(x + 1, value - numbers[x])
+  function getAnswer(index, value) {
+    if (index === numbers.length) {
+      value === target && answer++
     } else {
-      if (value === target) {
-        answer++
-      }
+      getAnswer(index + 1, value + numbers[index])
+      getAnswer(index + 1, value - numbers[index])
     }
   }
 
