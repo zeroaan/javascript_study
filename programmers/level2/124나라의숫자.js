@@ -5,6 +5,7 @@
 124 나라에는 모든 수를 표현할 때 1, 2, 4만 사용합니다.
 */
 
+/*
 function solution(n) {
   let answer = ""
 
@@ -19,5 +20,16 @@ function solution(n) {
     n = (n - 1) / 3
   }
 
+  return answer
+}
+*/
+
+function solution(n) {
+  let answer = ""
+  let rule = [4, 1, 2]
+  while (n > 0) {
+    answer = rule[n % 3] + answer
+    n = parseInt((n - 1) / 3)
+  }
   return answer
 }
