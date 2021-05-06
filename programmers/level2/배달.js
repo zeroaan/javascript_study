@@ -18,7 +18,7 @@ N개의 마을로 이루어진 나라가 있습니다.
 */
 
 function solution(N, road, K) {
-  var answer = 0
+  let answer = 0
   let arr = Array(N + 1).fill(Infinity)
   let adj = Array.from(Array(N + 1), () => Array())
 
