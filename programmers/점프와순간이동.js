@@ -26,12 +26,28 @@ OO 연구소는 한 번에 K 칸을 앞으로 점프하거나,
 */
 
 function solution(n) {
-  let answer = 0
+    let answer = 0
+    
+    while (n > 0) {
+        if (n % 2 === 1) {
+            n = (n - 1) / 2
+            answer++
+        } else {
+            n = n / 2
+        }
+    }
 
-  while (n > 0) {
-    answer += n % 2
-    n = Math.floor(n / 2)
-  }
-
-  return answer
+    return answer
 }
+
+/*
+function solution(n) {
+    let answer = 0
+    while (n > 0) {
+        answer += n % 2
+        n = Math.floor(n / 2)
+    }
+
+    return answer
+}
+*/
