@@ -8,32 +8,27 @@ number에서 k 개의 수를 제거했을 때 만들 수 있는 수 중 가장 �
 */
 
 function solution(number, k) {
-  let numStr = String(number)
-  let numLength = numStr.length
-  let stack = []
-  let count = 0
+  const stack = []
 
-  for (let i = 0; i < numLength; i++) {
-    let current = numStr[i]
+  for (let i = 0; i < number.length; i++) {
     if (!stack.length) {
-      stack.push(current)
+      stack.push(number[i])
       continue
     }
 
-    while (stack[stack.length - 1] < current) {
+    while (stack[stack.length - 1] < number[i]) {
       stack.pop()
-      count++
+      k--
 
-      if (count === k) {
-        return stack.join("") + numStr.substring(i)
+      if (k === 0) {
+        return stack.join("") + number.slice(i)
       }
 
-      if (stack.length === 0) {
-        break
-      }
+      if (stack.length === 0) break
     }
-    stack.push(current)
+
+    stack.push(number[i])
   }
 
-  return stack.join("").substring(0, numLength - k)
+  return stack.join("").slice(0, number.length - k)
 }
