@@ -22,6 +22,29 @@ function solution(record) {
 
   for (let i = 0; i < record.length; i++) {
     const sentence = record[i].split(" ")
+    if (sentence[0] !== "Leave") names[sentence[1]] = sentence[2]
+  }
+
+  for (let i = 0; i < record.length; i++) {
+    const sentence = record[i].split(" ")
+
+    if (sentence[0] === "Enter") {
+      answer.push(`${names[sentence[1]]}님이 들어왔습니다.`)
+    } else if (sentence[0] === "Leave") {
+      answer.push(`${names[sentence[1]]}님이 나갔습니다.`)
+    }
+  }
+
+  return answer
+}
+
+/*
+function solution(record) {
+  const answer = []
+  const names = {}
+
+  for (let i = 0; i < record.length; i++) {
+    const sentence = record[i].split(" ")
 
     if (sentence[0] === "Enter") {
       names = { ...names, [sentence[1]]: sentence[2] }
@@ -41,3 +64,4 @@ function solution(record) {
     }
   })
 }
+*/
