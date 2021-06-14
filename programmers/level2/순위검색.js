@@ -35,6 +35,66 @@ backend 직군을 선택했고, senior 경력이면서 코딩테스트 점수를
 
 function solution(info, query) {
   const answer = []
+  const dict = {
+      "": [],
+      "cpp": [],
+      "java": [],
+      "python": [],
+      "backend": [],
+      "frontend": [],
+      "junior": [],
+      "senior": [],
+      "chicken": [],
+      "pizza": []
+  }
+  
+  for (let i = 0; i < info.length; i++) {
+      const infoArr = info[i].split(" ")
+      const values = infoArr.slice(0, 4)
+      const score = Number(infoArr[infoArr.length - 1])
+      
+      dict[""].push(score)
+      dict[values[0]].push(score)
+      dict[values[1]].push(score)
+      dict[values[2]].push(score)
+      dict[values[3]].push(score)
+      
+      for (let j = 0; j < values.length; j++) {
+          for (let k = j + 1; k < values.length; k++) {
+              if (!dict[values[j] + values[k]]) {
+                  dict[values[j] + values[k]] = []
+              } 
+              dict[values[j] + values[k]].push(score)
+              
+              for (let l = k + 1; l < values.length; l++) {
+                  if (!dict[values[j] + values[k] + values[l]]) {
+                      dict[values[j] + values[k] + values[l]] = []
+                  }
+                  dict[values[j] + values[k] + values[l]].push(score)
+              }
+          }            
+      }
+      
+      if (!dict[values.join("")]) {
+          dict[values.join("")] = []
+      } 
+      dict[values.join("")].push(score)
+  }
+  
+  for (let m = 0; m < query.length; m++) {        
+      const queryArr = query[m].replace(/and |- /g, "").split(" ")
+      const queryStr = queryArr.slice(0, queryArr.length - 1).join("")
+      const queryScore = Number(queryArr[queryArr.length - 1])
+      
+      answer.push(dict[queryStr].filter((v) => v >= queryScore).length)
+  }
+  
+  return answer
+}
+
+/*
+function solution(info, query) {
+  const answer = []
 
   const info2 = info.map((v) => v.split(" "))
   const query2 = query.map((v) => v.replace(/and |- /g, "").split(" "))
@@ -50,3 +110,4 @@ function solution(info, query) {
 
   return answer
 }
+*/
