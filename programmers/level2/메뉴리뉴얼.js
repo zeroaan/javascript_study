@@ -25,7 +25,28 @@ function solution(orders, course) {
   }
   console.log(answer)
 
-  return answer
+  const dict = answer.flat().reduce((obj, x) => {
+    obj[x] = (obj[x] || 0) + 1
+    return obj
+  }, {})
+
+  const result = []
+  for (let i = 0; i < course.length; i++) {
+    const cos = []
+    for (let [k, v] of Object.entries(dict)) {
+      if (k.length === course[i] && v >= 2) {
+        cos[k] = v
+      }
+    }
+    const max = Math.max(...Object.values(cos))
+    for (let [k, v] of Object.entries(cos)) {
+      if (max === v) {
+        result.push(k)
+      }
+    }
+  }
+
+  return result.sort()
 }
 
 function makeCourse(arr, n) {
