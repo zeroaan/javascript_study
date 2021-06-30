@@ -16,6 +16,32 @@ s가 올바른 괄호 문자열이 되게 하는 x의 개수를 return 하도록
 */
 
 function solution(s) {
+  let answer = 0
+  const pair = { "]": "[", "}": "{", ")": "(" }
+
+  for (let i = 0; i < s.length; i++) {
+    const stack = []
+
+    for (let j = 0; j < s.length; j++) {
+      if (s[j] === "[" || s[j] === "{" || s[j] === "(") {
+        stack.push(s[j])
+      } else {
+        if (stack.pop() !== pair[s[j]]) {
+          stack.push(s[j])
+          break
+        }
+      }
+    }
+
+    if (stack.length === 0) answer++
+    s = s.slice(1) + s[0]
+  }
+
+  return answer
+}
+
+/*
+function solution(s) {
   let answer = s.length
   let stack = []
 
@@ -54,3 +80,4 @@ function solution(s) {
 
   return answer < 0 ? 0 : answer
 }
+*/
