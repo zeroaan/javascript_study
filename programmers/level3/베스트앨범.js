@@ -11,6 +11,48 @@
 */
 
 function solution(genres, plays) {
+    const answer = [];
+    
+    const sortGenre = sortPlays(genres, plays);
+    
+    for (let i = 0; i < sortGenre.length; i++) {
+        const genre = sortGenre[i];
+        
+        let sortPlay = [];
+        const index = [];
+        const play = [];
+        
+        for (let j = 0; j < genres.length; j++) {
+            if (genres[j] === genre) {
+                index.push(j);
+                play.push(plays[j]);
+            }
+        }
+        
+        sortPlay = sortPlays(index, play).slice(0, 2);
+        
+        sortPlay.forEach((v) => answer.push(Number(v)));
+    }
+        
+    return answer;
+}
+
+function sortPlays(genres, plays) {
+    let result = [];
+    const genreCount = {};
+    
+    for (let i = 0; i < genres.length; i++) {
+        if (!genreCount[genres[i]]) genreCount[genres[i]] = plays[i];
+        else genreCount[genres[i]] += plays[i];
+    }
+    
+    result = Object.entries(genreCount).sort((a, b) => b[1] - a[1]);
+    
+    return result.map((v) => v[0]);
+}
+
+/*
+function solution(genres, plays) {
   const answer = [];
 
   const sortGenre = sortGenres(genres, plays);
@@ -30,3 +72,4 @@ function sortGenres(genres, plays) {
     }
   }
 }
+*/
