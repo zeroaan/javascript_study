@@ -30,29 +30,27 @@ function solution(files) {
   const _files = [...files];
 
   return _files.sort((a, b) => {
-    const [aHead, aNumber] = makeFile(a);
-    const [bHead, bNumber] = makeFile(b);
+    const [aHead, aNumber] = getFile(a);
+    const [bHead, bNumber] = getFile(b);
 
-    if (aHead !== bHead) return aHead.localeCompare(bHead);
+    if (aHead !== bHead) return aHead < bHead ? -1 : 1;
     else if (aNumber !== bNumber) return aNumber - bNumber;
     else return 0;
   });
 }
 
-function makeFile(file) {
+function getFile(file) {
   let head = "";
   let number = "";
 
   for (let i = 0; i < file.length; i++) {
-    if (isNaN(file[i])) {
+    if (isNaN(file[i]) || file[i] === " ") {
       if (number.length === 0) head += file[i];
       else break;
     } else {
-      if (file[i] === " " && number.length === 0) head += file[i];
-      else number += file[i];
+      if (number.length < 5) number += file[i];
+      else break;
     }
-
-    if (number.length >= 5) break;
   }
 
   return [head.toLowerCase(), Number(number)];
