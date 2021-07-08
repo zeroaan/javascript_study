@@ -13,4 +13,11 @@ const result = value.reduce((acc, cur, idx) => {
   return acc;
 }, []);
 
-console.log(result);
+//console.log(result);
+
+for (let i = 0; i < 5; i++) {
+  for (let j = i + 1; j < 5; i++, j++) {
+    console.log(j);
+  }
+  console.log("*****************");
+}
