@@ -24,7 +24,6 @@ w에 해당하는 사전의 색인 번호를 출력하고, 입력에서 w를 제
 
 function solution(msg) {
   const answer = [];
-  const input = [];
 
   const dict = {
     A: 1,
@@ -57,25 +56,27 @@ function solution(msg) {
 
   for (let i = 0; i < msg.length; i++) {
     let cur = msg[i];
+    let next = cur;
 
-    if (!input.includes(cur)) {
-      input.push(cur);
+    if (i === msg.length - 1) {
       answer.push(dict[cur]);
-      dict[msg.substr(i, 2)] = Object.keys(dict).length + 1;
-      console.log(cur);
-      continue;
     }
 
     for (let j = i + 1; j < msg.length; j++) {
-      cur += msg[j];
+      next += msg[j];
 
-      if (!input.includes(cur)) {
-        input.push(cur);
+      if (!Object.keys(dict).includes(next)) {
         answer.push(dict[cur]);
-        dict[msg.substr(i, j - i + 2)] = Object.keys(dict).length + 1;
-        i += j - i;
-        console.log(cur);
+        dict[next] = Object.keys(dict).length + 1;
+        i += cur.length - 1;
         break;
+      } else {
+        cur = next;
+      }
+
+      if (j === msg.length - 1) {
+        answer.push(dict[next]);
+        i++;
       }
     }
   }
