@@ -68,6 +68,68 @@ function solution(msg) {
       if (!Object.keys(dict).includes(next)) {
         answer.push(dict[cur]);
         dict[next] = Object.keys(dict).length + 1;
+        break;
+      } else {
+        cur = next;
+        i++;
+      }
+
+      if (j === msg.length - 1) {
+        answer.push(dict[cur]);
+      }
+    }
+  }
+
+  return answer;
+}
+
+/*
+function solution(msg) {
+  const answer = [];
+
+  const dict = {
+    A: 1,
+    B: 2,
+    C: 3,
+    D: 4,
+    E: 5,
+    F: 6,
+    G: 7,
+    H: 8,
+    I: 9,
+    J: 10,
+    K: 11,
+    L: 12,
+    M: 13,
+    N: 14,
+    O: 15,
+    P: 16,
+    Q: 17,
+    R: 18,
+    S: 19,
+    T: 20,
+    U: 21,
+    V: 22,
+    W: 23,
+    X: 24,
+    Y: 25,
+    Z: 26,
+  };
+
+  for (let i = 0; i < msg.length; i++) {
+    let cur = msg[i];
+    let next = cur;
+
+    if (i === msg.length - 1) {
+      answer.push(dict[cur]);
+    }
+
+    for (let j = i + 1; j < msg.length; j++) {
+      next += msg[j];
+
+      if (!Object.keys(dict).includes(next)) {
+        answer.push(dict[cur]);
+        dict[next] = Object.keys(dict).length + 1;
         i += cur.length - 1;
         break;
       } else {
@@ -83,3 +145,4 @@ function solution(msg) {
 
   return answer;
 }
+*/
