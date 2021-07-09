@@ -60,6 +60,7 @@ function solution(msg) {
 
     if (i === msg.length - 1) {
       answer.push(dict[cur]);
+      break;
     }
 
     for (let j = i + 1; j < msg.length; j++) {
@@ -76,6 +77,7 @@ function solution(msg) {
 
       if (j === msg.length - 1) {
         answer.push(dict[cur]);
+        break;
       }
     }
   }
